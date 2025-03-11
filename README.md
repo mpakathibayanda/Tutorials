@@ -233,3 +233,213 @@ public class ExceptionHandlingExample {
 ---
 
 
+---
+
+
+## Java OOP Coding Exercises
+
+### 1. Encapsulation Exercise (Bank Account)
+**Task:**
+- Create a `BankAccount` class with **private** variables: `accountNumber`, `balance`.
+- Implement **getter and setter** methods.
+- Ensure the balance cannot be set to a negative value.
+- Create a `deposit` and `withdraw` method.
+
+```java
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = (balance >= 0) ? balance : 0;
+    }
+
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Deposit method
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Withdraw method
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient funds or invalid amount.");
+        }
+    }
+}
+```
+
+---
+
+### 2. Inheritance Exercise (Animal Hierarchy)
+**Task:**
+- Create a **parent class** `Animal` with a method `makeSound()`.
+- Create **subclasses** `Dog` and `Cat`, overriding `makeSound()`.
+
+```java
+class Animal {
+    void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Cat meows!");
+    }
+}
+```
+
+---
+
+### 3. Polymorphism Exercise (Method Overloading)
+**Task:**
+- Create a `Calculator` class with an `add()` method.
+- Implement method **overloading** for different data types.
+
+```java
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+```
+
+---
+
+### 4. Polymorphism Exercise (Method Overriding)
+**Task:**
+- Create a **parent class** `Vehicle` with `startEngine()` method.
+- Create **child classes** `Car` and `Bike` that override `startEngine()`.
+
+```java
+class Vehicle {
+    void startEngine() {
+        System.out.println("Starting the engine...");
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    void startEngine() {
+        System.out.println("Car engine starts with a key.");
+    }
+}
+
+class Bike extends Vehicle {
+    @Override
+    void startEngine() {
+        System.out.println("Bike engine starts with a self-start.");
+    }
+}
+```
+
+---
+
+### 5. Abstraction Exercise (Abstract Class)
+**Task:**
+- Create an **abstract class** `Shape` with an abstract method `calculateArea()`.
+- Implement `Rectangle` and `Circle` classes that extend `Shape`.
+
+```java
+abstract class Shape {
+    abstract double calculateArea();
+}
+
+class Rectangle extends Shape {
+    double length, width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+```
+
+---
+
+### 6. Interface Exercise (100% Abstraction)
+**Task:**
+- Create an `interface` `Playable` with a method `play()`.
+- Implement it in `Football` and `Cricket` classes.
+
+```java
+interface Playable {
+    void play();
+}
+
+class Football implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing football!");
+    }
+}
+
+class Cricket implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing cricket!");
+    }
+}
+```
+
+---
+
+## Bonus Challenge 💡
+**Create a small Java program that simulates a shopping cart system.**
+- Create a **Product** class with properties (`name`, `price`).
+- Create a **Cart** class that contains a list of `Product` objects.
+- Implement methods to `addProduct()`, `removeProduct()`, and `calculateTotal()`.
+
+---
+
+
+
