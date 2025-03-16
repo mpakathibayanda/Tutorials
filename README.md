@@ -1,445 +1,291 @@
-# Java Tutorials
+# Java Programming Practice Solutions
 
-### 1. Hello World Program
-**Task:**
-- Write a simple Java program that prints `Hello, World!` to the console.
+This repository contains solutions to the Java programming practice questions from Practise 1 Unit 1. Each question is solved with explanations and code examples.
+
+---
+
+## **Table of Contents**
+
+1. [Question 1: Choosing Data Types](#question-1-choosing-data-types)
+2. [Question 2: Distance Conversion Program](#question-2-distance-conversion-program)
+3. [Question 3: Interactive Distance Conversion Program](#question-3-interactive-distance-conversion-program)
+4. [Question 4: Egg Order Calculator](#question-4-egg-order-calculator)
+5. [Question 5: Election Vote Percentage Calculator](#question-5-election-vote-percentage-calculator)
+6. [Question 6: Percentage Calculator](#question-6-percentage-calculator)
+7. [Question 7: Life Insurance Premium Calculator](#question-7-life-insurance-premium-calculator)
+8. [Question 8: Photo Frame Price Calculator](#question-8-photo-frame-price-calculator)
+
+---
+
+## **Question 1: Choosing Data Types**
+
+**Task:** Choose the best data type for each of the following scenarios, provide a typical value, and explain your choice.
+
+| Scenario | Data Type | Typical Value | Explanation |
+|----------|-----------|---------------|-------------|
+| a) The number of people living in a single household | `int` | 4 | The number of people in a household is typically small, so `int` is sufficient. |
+| b) The year Nelson Mandela became a president | `int` | 1994 | Years are integers, and `int` can easily accommodate any year. |
+| c) The total number of people who attended a Kaizer Chiefs vs. Orlando Pirates match at FNB Stadium | `int` | 94736 | The number of attendees can be large, but `int` can handle it. |
+| d) The amount of money left in your bank account | `double` | 1234.56 | Money often requires decimal precision, so `double` is appropriate. |
+| e) The population of the earth | `long` | 7800000000 | The population of the earth is a very large number, so `long` is needed. |
+| f) The number of passengers on a bus | `int` | 50 | The number of passengers is relatively small, so `int` is sufficient. |
+| g) The price of a luxury Mercedes Benz SUV | `double` | 150000.00 | Prices often require decimal precision, so `double` is appropriate. |
+
+---
+
+## **Question 2: Distance Conversion Program**
+
+**Task:** Write a Java program that declares named constants to represent the number of centimeters, inches, meters, and kilometers in a mile. Compute and display the value in centimeters, inches, meters, and kilometers.
 
 ```java
-public class HelloWorld {
+public class DistanceConverter {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        final double CM_PER_MILE = 160934.4;
+        final double INCHES_PER_MILE = 63360;
+        final double METERS_PER_MILE = 1609.344;
+        final double KM_PER_MILE = 1.609344;
+
+        double miles = 10; // Example value
+
+        System.out.println(miles + " miles is:");
+        System.out.println((miles * CM_PER_MILE) + " centimeters");
+        System.out.println((miles * INCHES_PER_MILE) + " inches");
+        System.out.println((miles * METERS_PER_MILE) + " meters");
+        System.out.println((miles * KM_PER_MILE) + " kilometers");
     }
 }
 ```
 
----
+### Explanation:
 
-### 2. Variables and Data Types
-**Task:**
-- Declare and initialize different types of variables: `int`, `double`, `char`, `boolean`, `String`.
+- We declare constants for the conversion factors.
 
-```java
-public class VariablesExample {
-    public static void main(String[] args) {
-        int age = 25;
-        double height = 5.9;
-        char grade = 'A';
-        boolean isJavaFun = true;
-        String name = "John Doe";
-        
-        System.out.println("Age: " + age);
-        System.out.println("Height: " + height);
-        System.out.println("Grade: " + grade);
-        System.out.println("Is Java fun? " + isJavaFun);
-        System.out.println("Name: " + name);
-    }
-}
-```
+- We compute the equivalent distances in centimeters, inches, meters, and kilometers.
 
----
+- We display the results with explanatory text.
 
-### 3. User Input
-**Task:**
-- Take user input using `Scanner` and print the input value.
+
+## **Question 3: Interactive Distance Conversion Program**
+
+*Task:* Convert the program in Question 2 to an interactive application where the user inputs the number of miles.
 
 ```java
 import java.util.Scanner;
 
-public class UserInputExample {
+public class InteractiveDistanceConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine();
-        
-        System.out.println("Hello, " + name + "!");
-        
-        scanner.close();
+        System.out.print("Enter the number of miles: ");
+        double miles = scanner.nextDouble();
+
+        final double CM_PER_MILE = 160934.4;
+        final double INCHES_PER_MILE = 63360;
+        final double METERS_PER_MILE = 1609.344;
+        final double KM_PER_MILE = 1.609344;
+
+        System.out.println(miles + " miles is:");
+        System.out.println((miles * CM_PER_MILE) + " centimeters");
+        System.out.println((miles * INCHES_PER_MILE) + " inches");
+        System.out.println((miles * METERS_PER_MILE) + " meters");
+        System.out.println((miles * KM_PER_MILE) + " kilometers");
     }
 }
 ```
 
----
+### Explanation:
 
-### 4. If-Else Condition
-**Task:**
-- Write a Java program that checks if a number is even or odd.
+- We use Scanner to accept user input for the number of miles.
+
+- The rest of the program remains the same as in Question 2.
+
+
+## **Question 4: Egg Order Calculator**
+**Task**: Write a program that calculates the cost of an egg order based on the number of eggs.
 
 ```java
+
 import java.util.Scanner;
 
-public class EvenOddChecker {
+public class EggOrderCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter a number: ");
-        int number = scanner.nextInt();
-        
-        if (number % 2 == 0) {
-            System.out.println("The number is even.");
-        } else {
-            System.out.println("The number is odd.");
-        }
-        
-        scanner.close();
+        System.out.print("Enter the number of eggs: ");
+        int eggs = scanner.nextInt();
+
+        int dozens = eggs / 12;
+        int looseEggs = eggs % 12;
+
+        double totalCost = (dozens * 59.99) + (looseEggs * 8.50);
+
+        System.out.println("You ordered " + eggs + " eggs. That's " + dozens + " dozen at R59.99 per dozen and " + looseEggs + " loose eggs at R8.50 each for a total of R" + totalCost);
     }
 }
 ```
 
----
+### Explanation:
 
-### 5. Loops (For Loop)
-**Task:**
-- Print numbers from 1 to 10 using a `for` loop.
+- We calculate the number of dozens and loose eggs.
 
-```java
-public class ForLoopExample {
-    public static void main(String[] args) {
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(i);
-        }
-    }
-}
-```
+- We compute the total cost based on the given prices.
 
----
+- We display the result with a full explanation.
 
-### 6. Loops (While Loop)
-**Task:**
-- Print numbers from 10 to 1 using a `while` loop.
+
+## **Question 5: Election Vote Percentage Calculator**
+**Task**: Write a program that calculates the percentage of votes each political structure received.
 
 ```java
-public class WhileLoopExample {
-    public static void main(String[] args) {
-        int i = 10;
-        while (i >= 1) {
-            System.out.println(i);
-            i--;
-        }
-    }
-}
-```
 
----
-
-### 7. Arrays
-**Task:**
-- Declare an integer array and print all elements.
-
-```java
-public class ArrayExample {
-    public static void main(String[] args) {
-        int[] numbers = {10, 20, 30, 40, 50};
-        
-        for (int num : numbers) {
-            System.out.println(num);
-        }
-    }
-}
-```
-
----
-
-### 8. Functions (Methods)
-**Task:**
-- Write a method that takes two numbers and returns their sum.
-
-```java
-public class MethodExample {
-    public static int add(int a, int b) {
-        return a + b;
-    }
-
-    public static void main(String[] args) {
-        int sum = add(5, 10);
-        System.out.println("Sum: " + sum);
-    }
-}
-```
-
----
-
-### 9. Switch Case
-**Task:**
-- Write a program that takes an integer input (1-3) and prints a message based on the value.
-
-```java
 import java.util.Scanner;
 
-public class SwitchExample {
+public class ElectionVoteCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter a number (1-3): ");
-        int choice = scanner.nextInt();
-        
-        switch (choice) {
-            case 1:
-                System.out.println("You selected One.");
-                break;
-            case 2:
-                System.out.println("You selected Two.");
-                break;
-            case 3:
-                System.out.println("You selected Three.");
-                break;
-            default:
-                System.out.println("Invalid selection.");
-        }
-        
-        scanner.close();
+
+        System.out.print("Enter votes for EFFSC: ");
+        int effscVotes = scanner.nextInt();
+        System.out.print("Enter votes for SASCO: ");
+        int sascoVotes = scanner.nextInt();
+        System.out.print("Enter votes for ANCYL: ");
+        int ancylVotes = scanner.nextInt();
+
+        int totalVotes = effscVotes + sascoVotes + ancylVotes;
+
+        double effscPercentage = (effscVotes * 100.0) / totalVotes;
+        double sascoPercentage = (sascoVotes * 100.0) / totalVotes;
+        double ancylPercentage = (ancylVotes * 100.0) / totalVotes;
+
+        System.out.println("EFFSC received " + effscPercentage + "% of the vote.");
+        System.out.println("SASCO received " + sascoPercentage + "% of the vote.");
+        System.out.println("ANCYL received " + ancylPercentage + "% of the vote.");
     }
 }
+
 ```
+### Explanation:
 
----
+- We accept the number of votes for each political structure.
 
-### 10. Exception Handling
-**Task:**
-- Implement try-catch to handle division by zero.
+- We calculate the total votes and the percentage of votes each structure received.
+
+- We display the results.
+
+
+## **Question 6: Percentage Calculator**
+**Task**: Create an application that calculates the percentage of one number relative to another.
 
 ```java
+
 import java.util.Scanner;
 
-public class ExceptionHandlingExample {
+public class Percentages {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        try {
-            System.out.print("Enter numerator: ");
-            int numerator = scanner.nextInt();
-            
-            System.out.print("Enter denominator: ");
-            int denominator = scanner.nextInt();
-            
-            int result = numerator / denominator;
-            System.out.println("Result: " + result);
-        } catch (ArithmeticException e) {
-            System.out.println("Error: Division by zero is not allowed.");
-        } finally {
-            scanner.close();
-        }
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+
+        computePercent(num1, num2);
+        computePercent(num2, num1);
+    }
+
+    public static void computePercent(double a, double b) {
+        double percentage = (a / b) * 100;
+        System.out.println(a + " is " + percentage + "% of " + b);
     }
 }
+
 ```
+### Explanation:
 
----
+- We accept two numbers from the user.
 
-## Bonus Challenge 💡
-**Create a Java program that calculates the factorial of a number using recursion.**
-- Write a method `factorial(int n)` that returns `n!`.
-- Call the method in `main()` and print the result.
+- We pass these numbers to the computePercent method, which calculates and displays the percentage.
 
----
+- We call the method twice, swapping the order of the numbers.
 
 
----
-
-
-## Java OOP Coding Exercises
-
-### 1. Encapsulation Exercise (Bank Account)
-**Task:**
-- Create a `BankAccount` class with **private** variables: `accountNumber`, `balance`.
-- Implement **getter and setter** methods.
-- Ensure the balance cannot be set to a negative value.
-- Create a `deposit` and `withdraw` method.
+## **Question 7: Life Insurance Premium Calculator**
+**Task:** Write a program that calculates the annual policy premium based on the customer's age.
 
 ```java
-class BankAccount {
-    private String accountNumber;
-    private double balance;
 
-    // Constructor
-    public BankAccount(String accountNumber, double balance) {
-        this.accountNumber = accountNumber;
-        this.balance = (balance >= 0) ? balance : 0;
+import java.util.Scanner;
+
+public class LifeInsurancePremium {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the current year: ");
+        int currentYear = scanner.nextInt();
+        System.out.print("Enter your birth year: ");
+        int birthYear = scanner.nextInt();
+
+        int age = currentYear - birthYear;
+        int premium = calculatePremium(age);
+
+        System.out.println("Your annual premium is: R" + premium);
     }
 
-    // Getter for balance
-    public double getBalance() {
-        return balance;
-    }
-
-    // Deposit method
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            System.out.println("Deposited: " + amount);
-        } else {
-            System.out.println("Invalid deposit amount.");
-        }
-    }
-
-    // Withdraw method
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            System.out.println("Withdrawn: " + amount);
-        } else {
-            System.out.println("Insufficient funds or invalid amount.");
-        }
+    public static int calculatePremium(int age) {
+        int decade = age / 10;
+        return (decade + 15) * 20;
     }
 }
+
 ```
+## Explanation:
 
----
+- We calculate the customer's age based on the current year and birth year.
 
-### 2. Inheritance Exercise (Animal Hierarchy)
-**Task:**
-- Create a **parent class** `Animal` with a method `makeSound()`.
-- Create **subclasses** `Dog` and `Cat`, overriding `makeSound()`.
+- We pass the age to the calculatePremium method, which computes the premium.
+
+- We display the premium.
+
+
+## **Question 8: Photo Frame Price Calculator**
+**Task:** Create a class with overloaded methods to compute the price of photo frames.
 
 ```java
-class Animal {
-    void makeSound() {
-        System.out.println("Animal makes a sound.");
+
+import java.util.Scanner;
+
+public class PhotoFrame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of photo frames: ");
+        int quantity = scanner.nextInt();
+        System.out.print("Enter the reward amount: ");
+        double reward = scanner.nextDouble();
+
+        System.out.println("Total due (no parameters): " + computePrice());
+        System.out.println("Total due (quantity): " + computePrice(quantity));
+        System.out.println("Total due (quantity and reward): " + computePrice(quantity, reward));
+    }
+
+    public static double computePrice() {
+        return 250 * 1.15; // 15% VAT
+    }
+
+    public static double computePrice(int quantity) {
+        return (250 * quantity) * 1.15; // 15% VAT
+    }
+
+    public static double computePrice(int quantity, double reward) {
+        return ((250 * quantity) - reward) * 1.15; // 15% VAT
     }
 }
 
-class Dog extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Dog barks!");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    void makeSound() {
-        System.out.println("Cat meows!");
-    }
-}
 ```
+### Explanation:
 
----
+- We have three overloaded computePrice methods:
 
-### 3. Polymorphism Exercise (Method Overloading)
-**Task:**
-- Create a `Calculator` class with an `add()` method.
-- Implement method **overloading** for different data types.
+- One with no parameters (default price for one frame).
 
-```java
-class Calculator {
-    int add(int a, int b) {
-        return a + b;
-    }
+- One with a quantity parameter.
 
-    double add(double a, double b) {
-        return a + b;
-    }
+- One with both quantity and reward parameters.
 
-    int add(int a, int b, int c) {
-        return a + b + c;
-    }
-}
-```
-
----
-
-### 4. Polymorphism Exercise (Method Overriding)
-**Task:**
-- Create a **parent class** `Vehicle` with `startEngine()` method.
-- Create **child classes** `Car` and `Bike` that override `startEngine()`.
-
-```java
-class Vehicle {
-    void startEngine() {
-        System.out.println("Starting the engine...");
-    }
-}
-
-class Car extends Vehicle {
-    @Override
-    void startEngine() {
-        System.out.println("Car engine starts with a key.");
-    }
-}
-
-class Bike extends Vehicle {
-    @Override
-    void startEngine() {
-        System.out.println("Bike engine starts with a self-start.");
-    }
-}
-```
-
----
-
-### 5. Abstraction Exercise (Abstract Class)
-**Task:**
-- Create an **abstract class** `Shape` with an abstract method `calculateArea()`.
-- Implement `Rectangle` and `Circle` classes that extend `Shape`.
-
-```java
-abstract class Shape {
-    abstract double calculateArea();
-}
-
-class Rectangle extends Shape {
-    double length, width;
-
-    Rectangle(double length, double width) {
-        this.length = length;
-        this.width = width;
-    }
-
-    @Override
-    double calculateArea() {
-        return length * width;
-    }
-}
-
-class Circle extends Shape {
-    double radius;
-
-    Circle(double radius) {
-        this.radius = radius;
-    }
-
-    @Override
-    double calculateArea() {
-        return Math.PI * radius * radius;
-    }
-}
-```
-
----
-
-### 6. Interface Exercise (100% Abstraction)
-**Task:**
-- Create an `interface` `Playable` with a method `play()`.
-- Implement it in `Football` and `Cricket` classes.
-
-```java
-interface Playable {
-    void play();
-}
-
-class Football implements Playable {
-    @Override
-    public void play() {
-        System.out.println("Playing football!");
-    }
-}
-
-class Cricket implements Playable {
-    @Override
-    public void play() {
-        System.out.println("Playing cricket!");
-    }
-}
-```
-
----
-
-## Bonus Challenge 💡
-**Create a small Java program that simulates a shopping cart system.**
-- Create a **Product** class with properties (`name`, `price`).
-- Create a **Cart** class that contains a list of `Product` objects.
-- Implement methods to `addProduct()`, `removeProduct()`, and `calculateTotal()`.
-
----
-
-
+- We prompt the user for input and test all three methods.
 
